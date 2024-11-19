@@ -16,6 +16,9 @@ gpiod: gpio_toggle.c
 install: gpiod
 	mkdir -p $(INSTALL_DIR)
 	cp gpiod $(INSTALL_DIR)
+	cp esme-led /etc/init.d/esme-led 
+	chmod 0755 /etc/init.d/esme-led 
+
 	
 #cible clean pour supprimer les fichiers compilés
 clean:
