@@ -9,7 +9,7 @@
 int main(void) {
 	struct gpiod_chip *chip;
 	struct gpiod_line *line;
-	int value;
+	int value = 0;
 	
 	//Ouvre le périphérique GPIO
 	chip = gpiod_chip_open(GPIO_CHIP);
@@ -37,15 +37,18 @@ int main(void) {
 	//Boucle infinie pour alterner la valeur de la GPIO toutes les secondes
 	while(1) {
 		//Inverser la valeur
+		value = !value;
+		
 		if(value<0) {
 			perror("Failed to read GPIO value");
 			break;
 		}
-		gpiod_line_set_value(line, !value);
+		gpiod_line_set_value(line, value);
 		
 		printf("GPIO#%d -> %d\n", GPIO_LINE, value);
 		
 		sleep(1);
+		
 	}
 	
 	//Ferme le périphérique GPIO avant de quitter et libère la ligne
