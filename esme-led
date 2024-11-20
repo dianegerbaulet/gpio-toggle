@@ -13,7 +13,7 @@
 #include <stdlib.h>
 
 # Nom du programme
-PROGRAM="/usr/bin/gpio"
+PROGRAM="/usr/bin/gpiod"
 NAME="esme-led"
 
 # Fonction pour démarrer le service
