@@ -13,10 +13,10 @@ gpiod: gpiod.o
 
 #cible d'installation
 install: gpiod
-	mkdir -p $(INSTALL_DIR)/usr/bin
-	cp gpiod $(INSTALL_DIR)/usr/bin
-	cp esme-led $(INSTALL_DIR)/etc/init.d/esme-led 
-	chmod 0755 esme-led $(INSTALL_DIR)/etc/init.d/esme-led 
+	install -m 0755 -d $(INSTALL_DIR)/usr/bin
+	install -m 0755 gpiod $(INSTALL_DIR)/usr/bin
+	install -m 0755 -d $(INSTALL_DIR)/etc/init.d
+	install -m 0755 esme-led $(INSTALL_DIR)/etc/init.d
 	
 #cible clean pour supprimer les fichiers compilés
 clean:
