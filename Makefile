@@ -9,16 +9,14 @@ INSTALL_DIR ?= ./.install
 all: gpiod
 
 #compilation implicite de gpio_toggle.c en pgiod
-gpiod: gpio_toggle.c
-	$(CC) $(CFLAGS) -o gpiod gpio_toggle.c $(LDLIBS)
+gpiod: gpiod.o
 
 #cible d'installation
 install: gpiod
-	mkdir -p $(INSTALL_DIR)
-	cp gpiod $(INSTALL_DIR)
-	cp esme-led /etc/init.d/esme-led 
-	chmod 0755 /etc/init.d/esme-led 
-
+	mkdir -p $(INSTALL_DIR)/usr/bin
+	cp gpiod $(INSTALL_DIR)/usr/bin
+	cp esme-led $(INSTALL_DIR)/etc/init.d/esme-led 
+	chmod 0755 esme-led $(INSTALL_DIR)/etc/init.d/esme-led 
 	
 #cible clean pour supprimer les fichiers compilés
 clean:
